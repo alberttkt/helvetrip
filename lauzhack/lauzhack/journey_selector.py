@@ -1,6 +1,6 @@
 from math import asin, cos, radians, sin, sqrt
-from . import service_requests
-from . import transport
+
+from . import service_requests, transport
 
 
 def extract_datetime_from_timestamp(timestamp):
@@ -220,7 +220,10 @@ def compute_all_additional_bike_travels(
             continue
 
         if trip["legs"][0]["mode"] == "FOOT":
-            trip["legs"].pop(0)
+            while trip["legs"][0]["mode"] != "TRAIN":
+                trip["legs"].pop(0)
+                if len(trip["legs"]) == 0:
+                    break
         else:
             continue
 
@@ -282,8 +285,8 @@ def compute_all_additional_bike_travels(
 
         trips_train = response.json()["trips"]
 
-        for trip in trips_train:
-            legs = trip["legs"]
+        for tripp in trips_train:
+            legs = tripp["legs"]
             legs.insert(0, bike_leg)
 
         all_possible_bike_travels["trips"].extend(trips_train)

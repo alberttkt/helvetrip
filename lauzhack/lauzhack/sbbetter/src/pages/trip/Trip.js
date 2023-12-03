@@ -117,6 +117,14 @@ const Trip = () => {
             }
             );
 
+            for (let i = 0; i < final.length; i++) {
+                if (final[i].legs[0].mode === "BIKE") {
+                    //pop the element at index 1
+                    final[i].legs[1] = final[i].legs[0]
+                    
+                }
+            }
+
             
 
 
