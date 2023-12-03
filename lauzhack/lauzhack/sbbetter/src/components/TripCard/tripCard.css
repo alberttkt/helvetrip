@@ -1,0 +1,29 @@
+.trip-card {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all .1s ease-in-out;
+    z-index: 1;
+}
+
+.trip-item-card {
+    width: 100%;
+    cursor: pointer;
+}
+
+.trip-item-card > .sbb-card {
+    padding: 10px;
+}
+
+.selected {
+    border-radius: 10px;
+    border: 1px solid #212121;
+}
+
+.co-consumption {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+}
